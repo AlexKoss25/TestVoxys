@@ -2,7 +2,7 @@
     require_once 'link.php';
     
     if (isset ($_GET['last_name'], $_GET['first_name'], $_GET['patronymic'],$_GET['status'])) {
-        
+
         $input_last_name = $_GET['last_name'];
         $input_first_name  = $_GET['first_name'];
         $input_patronymic  = $_GET['patronymic'];
@@ -84,7 +84,15 @@
                 Фамилия: <input type="text" name="last_name">
                 Имя: <input type="text" name="first_name">
                 Отчестов: <input type="text" name="patronymic">
-                Статус: <input type="int" name="status">  
+                Статус: <select name="status">
+                    <option disabled>Выбирете нужный статус:</option>
+                    <option value="Первый">Первый</option>
+                    <option value="Второй">Второй</option>
+                    <option value="Третий">Третий</option>
+                    <option selected value="">Поиск без учёта статуса</option>                    
+                </select>
+                
+                
                 <p>
                     <input type="submit" value="Поиск">
                 </p>
