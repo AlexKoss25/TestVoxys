@@ -1,0 +1,137 @@
+
+
+.table_sort table {
+    border-collapse: collapse;
+}
+
+.table_sort th {
+    color: #ffebcd;
+    background: #008b8b;
+    cursor: pointer;
+}
+
+.table_sort td,
+.table_sort th {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid #846868;
+}
+
+.table_sort tbody tr:nth-child(even) {
+    background: #e3e3e3;
+}
+
+th.sorted[data-order="1"],
+th.sorted[data-order="-1"] {
+    position: relative;
+}
+
+th.sorted[data-order="1"]::after,
+th.sorted[data-order="-1"]::after {
+    right: 8px;
+    position: absolute;
+}
+
+th.sorted[data-order="-1"]::after {
+    content: "▼"
+}
+
+th.sorted[data-order="1"]::after {
+    content: "▲"
+}
+
+.main-quastion {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 300px;
+}
+
+.quastion {
+    font-size: 70px;
+}
+
+.main-answer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.answer {
+    display: flex;    
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100px;       
+    
+}
+
+
+
+.green{
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    color: rgb(255, 255, 255);
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 10px 16px;
+    margin: 20px 20px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;        
+    }
+    .green {
+    background-color: rgb( 43, 153, 91 );
+    border: 1px solid rgb( 33, 126, 74 );
+    }
+            
+    .green:hover {
+    background-color: rgb( 75, 183, 141 );
+    }
+
+    .main-search {
+        display: flex;
+        width: 100%;
+
+    }
+
+    .info-block {
+        display: flex;
+        justify-content: center;
+        background-color: #008b8b54;
+        border: 1px solid;
+        border-radius: 6px;
+        padding: 10px 5px;
+        width: 60%;
+    }
+
+    .text-search {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .form-search {
+        display: flex;
+        justify-content: center;
+    }
+
+    .table-search {
+        display: flex;
+        justify-content: center;
+    }
+
+    .info-search {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }

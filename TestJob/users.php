@@ -11,51 +11,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">  
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css" >  
         <title>Всё</title>
     </head>
-    <style>
-        .table_sort table {
-            border-collapse: collapse;
-        }
-
-        .table_sort th {
-            color: #ffebcd;
-            background: #008b8b;
-            cursor: pointer;
-        }
-
-        .table_sort td,
-        .table_sort th {
-            width: 150px;
-            height: 40px;
-            text-align: center;
-            border: 2px solid #846868;
-        }
-
-        .table_sort tbody tr:nth-child(even) {
-            background: #e3e3e3;
-        }
-
-        th.sorted[data-order="1"],
-        th.sorted[data-order="-1"] {
-            position: relative;
-        }
-
-        th.sorted[data-order="1"]::after,
-        th.sorted[data-order="-1"]::after {
-            right: 8px;
-            position: absolute;
-        }
-
-        th.sorted[data-order="-1"]::after {
-            content: "▼"
-        }
-
-        th.sorted[data-order="1"]::after {
-            content: "▲"
-        }
-    </style>    
+    
     <body>
         <h2>Введи информацию для поиска пользователя</h2>
             <form action="http://127.0.0.1/TestJob/search.php">

@@ -37,111 +37,73 @@ $result_users = mysqli_query($link, $query) or die('Query failed: ' . mysqli_err
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="style.css" >
     <meta charset="UTF-8">
     <title>Админ</title>
 </head>
-<style>
-    .table_sort table {
-        border-collapse: collapse;
-    }
-
-    .table_sort th {
-        color: #ffebcd;
-        background: #008b8b;
-        cursor: pointer;
-    }
-
-    .table_sort td,
-    .table_sort th {
-        width: 150px;
-        height: 40px;
-        text-align: center;
-        border: 2px solid #846868;
-    }
-
-    .table_sort tbody tr:nth-child(even) {
-        background: #e3e3e3;
-    }
-
-    th.sorted[data-order="1"],
-    th.sorted[data-order="-1"] {
-        position: relative;
-    }
-
-    th.sorted[data-order="1"]::after,
-    th.sorted[data-order="-1"]::after {
-        right: 8px;
-        position: absolute;
-    }
-
-    th.sorted[data-order="-1"]::after {
-        content: "▼"
-    }
-
-    th.sorted[data-order="1"]::after {
-        content: "▲"
-    }
-</style>
 
 <body>
-    <h2>Введи информацию для заведения нового пользователя</h2>
-    <form action="http://127.0.0.1/TestJob/admin.php" method="POST">
-        Фамилия: <input type="text" name="last_name">
-        Имя: <input type="text" name="first_name">
-        Отчестов: <input type="text" name="patronymic">
-        <p>
-            <input type="submit" value="Добавить">
-        </p>
-    </form>
+    <div class="text-search">
+        <h2>Введи информацию для заведения нового пользователя</h2>
+    </div>
+    <div class="form-search">
+        <form action="http://127.0.0.1/TestJob/admin.php" method="POST">
+            Фамилия: <input type="text" name="last_name">
+            Имя: <input type="text" name="first_name">
+            Отчестов: <input type="text" name="patronymic">
+            
+                <input type="submit" value="Добавить" style="margin-left: 50px;">
+                <p></p>
+        </form>
+    </div>
+    <div class="table-search">
+        <table class="table_sort" data-table="users">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($row = mysqli_fetch_array($result_users)) {
+                ?><tr data-id="<?= $row['id'] ?>">
+                        <td class="id" data-field="id"><?= $row['id'] ?></td>
+                        <td class="edit last_name" data-field="last_name"><?= $row['last_name'] ?></td>
+                        <td class="edit" data-field="first_name"><?= $row['first_name'] ?></td>
+                        <td class="edit" data-field="patronymic"><?= $row['patronymic'] ?></td>
 
-
-    <table class="table_sort" data-table="users">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
-                <th>Статус</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            while ($row = mysqli_fetch_array($result_users)) {
-            ?><tr data-id="<?= $row['id'] ?>">
-                    <td class="id" data-field="id"><?= $row['id'] ?></td>
-                    <td class="edit last_name" data-field="last_name"><?= $row['last_name'] ?></td>
-                    <td class="edit" data-field="first_name"><?= $row['first_name'] ?></td>
-                    <td class="edit" data-field="patronymic"><?= $row['patronymic'] ?></td>
-
-                    <td data-field="status"> <?php if ($row['status'] == 'Первый') { 
-                                            ?>
-                                            <select class="status" name="status">
-                                                <option selected><?= $row['status'] ?></option>
-                                                <option>Второй</option>
-                                                <option>Третий</option>
-                                            </select>
-                                            <?php } else if ($row['status'] == 'Второй') {
-                                            ?>
-                                            <select class="status" name="status">
-                                                <option selected><?= $row['status'] ?></option>
-                                                <option>Первый</option>
-                                                <option>Третий</option>
-                                            </select>
-                                            <?php } else { 
+                        <td data-field="status"> <?php if ($row['status'] == 'Первый') { 
                                                 ?>
-                                            <select class="status" name="status">
-                                                <option selected><?= $row['status'] ?></option>
-                                                <option>Первый</option>
-                                                <option>Второй</option>
-                                            </select>
-                                            <?php } ?>                        
-                    </td>
-                </tr><?php
-                    } ?>
-        </tbody>
-    </table>
-
+                                                <select class="status" name="status">
+                                                    <option selected><?= $row['status'] ?></option>
+                                                    <option>Второй</option>
+                                                    <option>Третий</option>
+                                                </select>
+                                                <?php } else if ($row['status'] == 'Второй') {
+                                                ?>
+                                                <select class="status" name="status">
+                                                    <option selected><?= $row['status'] ?></option>
+                                                    <option>Первый</option>
+                                                    <option>Третий</option>
+                                                </select>
+                                                <?php } else { 
+                                                    ?>
+                                                <select class="status" name="status">
+                                                    <option selected><?= $row['status'] ?></option>
+                                                    <option>Первый</option>
+                                                    <option>Второй</option>
+                                                </select>
+                                                <?php } ?>                        
+                        </td>
+                    </tr><?php
+                        } ?>
+            </tbody>
+        </table>
+    </div>                
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -233,6 +195,10 @@ $result_users = mysqli_query($link, $query) or die('Query failed: ' . mysqli_err
             })
         });
     </script>
+
+    <div class="info-search">        
+        <span class="info-block">&nbsp;&nbsp;&nbsp;&nbsp;На данной странице реализован первый модуль «Админка». В таблице находятся все занесенные пользователи и их статусы. Реализована возможность записи ФИО пользователя в БД. Статус "Первый" присваивается автоматически новым пользователям. Добавление происходит после нажатия кнопки "Добавить". Также есть возможность редактирования уже имеющихся записей, достаточно нажать ячейку данные которой хотите изменить и вписать новые данные</span>
+    </div>
 
 </body>
 
